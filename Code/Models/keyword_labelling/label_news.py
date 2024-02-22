@@ -16,7 +16,6 @@ if __name__ == "__main__":
         os.remove(args.save_path)
 
     keywords = [kw.split(' ') for kw in args.keywords]
-    print(keywords)
     for platform in ['Youtube','TikTok','Twitter']:
         print('Creating labels for {}'.format(platform))
         creator = WeakLabelCreator(platform=platform,path=f'../../../Data/{platform}/news.jsonl',n_jobs=args.n_jobs,keywords=keywords)

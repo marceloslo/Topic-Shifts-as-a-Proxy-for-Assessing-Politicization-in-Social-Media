@@ -82,6 +82,7 @@ y_train[np.where(y_train=='p')]=1
 y_train = y_train.astype('int32')
 X_train = w2v.encode(df['text'].tolist())
 
+best_parameters = {}
 if args.model_params:
     best_parameters = json.loads(args.model_params)
 else:

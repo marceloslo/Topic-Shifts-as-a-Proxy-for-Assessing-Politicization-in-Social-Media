@@ -1,7 +1,7 @@
 # Topic Shifts as a Proxy for Assessing Politicization in Social Media
 Repository for the paper Topic Shifts as a Proxy for Assessing Politicization in Social Media accepted at ICWSM 2024.
 
-The data used is available at https://doi.org/10.5281/zenodo.10689619
+The data used is available at https://doi.org/10.5281/zenodo.10689619. Rerunning the scripts for the labelling and word2vec training may lead to slightly different results due to randomness. 
 
 ## How to run the basic experiments
 
@@ -12,6 +12,8 @@ Then, run the script run_experiments.sh and it should give you the results for a
 There are other additional scripts in the scripts folder, which run the code according to what was used in the paper.
 
 ## Code Usage
+
+**WARNING:** running label_news.py and trainw2v.py with the sample parameters will lead to the dataset downloaded being overwritten, which may lead to different results.
 
 ### label_news.py
 Script to create the file with keyword based labels used in the first step of PU learning.
@@ -60,4 +62,21 @@ Parameters:
 Sample usage:
 ```
 python run_pu.py --labelled_file ../../../Data/labelled_3kw.jsonl --model_name 3kw --model_params "{\"reg_alpha\": 45, \"n_estimators\": 100, \"min_child_weight\": 2, \"max_depth\": 5, \"learning_rate\": 0.1, \"gamma\": 3, \"colsample_bytree\": 0.9999999999999999}"
+```
+
+### run_pu_scores.py
+Script to create the file with all PU scores for all platforms, which is used for the analysis.
+
+Parameters:
+
+- --w2v: Path to word2vec model, default = '../../../Data/Keyword_Classification/300_dims_w2v_news.model'
+- --labelled_file: Path to labelled data, default = '../../../Data/labelled.jsonl'.
+- --model_params: Json string containing the parameters to use for the model. If not given, the script will search for good parameters instead.
+- --parameter_path: Path to the file produced by the run_pu.py script that contains information about the final model and its parameters. Can be used instead of --model_params, default = './stats/model_stats.jsonl'.
+- --model_name: The name of your model, used to save the resulting files, as well as to recover the stats produced in run_pu.py, default = all_keywords.
+- --spy_tolerance: The tolerance of spies to use in the first step of the PU learning, default = 0.003. A desirable tolerance should lead to 10-20% of your data being classified as negative.
+
+Sample usage, after running the run_pu.py script:
+```
+python run_pu_scores.py --labelled_file ../../../Data/labelled_3kw.jsonl --model_name 3kw
 ```

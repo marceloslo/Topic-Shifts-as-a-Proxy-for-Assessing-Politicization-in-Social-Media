@@ -1,7 +1,7 @@
 # Topic Shifts as a Proxy for Assessing Politicization in Social Media
-Repository for the paper Topic Shifts as a Proxy for Assessing Politicization in Social Media accepted at ICWSM 2024.
+Repository for the paper Topic Shifts as a Proxy for Assessing Politicization in Social Media accepted at ICWSM 2024 ([https://doi.org/10.1609/icwsm.v18i1.31366](https://doi.org/10.1609/icwsm.v18i1.31366))
 
-The data used is available at https://doi.org/10.5281/zenodo.10689619. Rerunning the scripts for the labelling and word2vec training may lead to slightly different results due to randomness. 
+The data used is available at [https://doi.org/10.5281/zenodo.10689619](https://doi.org/10.5281/zenodo.10689619). Rerunning the scripts for the labelling and word2vec training may lead to slightly different results due to randomness. 
 
 ## How to run the basic experiments
 
